@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+#this sets up ruby as the languqge
+
+require_relative "../lib/nj_hikes" 
+#this is my RUN file
+
+NjHikes::CLI.new.call
+#this is name-spaced to avoid confusion when multiple Gems 
+#use the same class (in this case, CLI)
