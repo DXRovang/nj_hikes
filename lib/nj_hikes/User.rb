@@ -1,3 +1,5 @@
+require "pry"
+
 class NjHikes::User
 
   attr_accessor :city
