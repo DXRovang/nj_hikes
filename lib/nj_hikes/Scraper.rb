@@ -6,34 +6,77 @@ class NjHikes::Scraper
 
   @@hike_list = []
 
+  def initialize
+    self.hikes
+  end
+
+  def self.all
+    @@hike_list
+  end
+
   def hikes
     #scrape full site of hikes for individual websites
     site = "https://www.njhiking.com/nj-hikes/"
     page = Nokogiri::HTML(open(site))
     results = page.css("ul.fa-ul li")
     results.each do |r|
-      @@hike_list << r.css("a").attr("href") 
-      @@hike_list
+      @@hike_list << r.css("a").attr("href").value 
     end
+    @@hike_list
+  end
 
-    def list_hikes
-      @@hike_list.each.with_index(1) do |hike, index|
-        puts "#{index + 1}. #{hike}"
-      end
+  def list_hikes
+    @@hike_list.each.with_index(1) do |hike, index|
+      puts "#{index + 1}. #{hike}"
     end
-
-
-  def hike_location
-    self.hikes
-    #iterate over individual websites for coordinates
-    site = @@hike_list[0].value#[@index - 1]
-    page = Nokogiri::HTML(open(site))
-    r = page.css("h3 a")    
-    r.text
-    puts r.text
   end
 
 end
+
+
+
+ # def hike_info
+  #   #scrape hike for info
+  #   site = @scraper.hikes[@list_number - 1]
+  #   binding.pry
+  #   page = Nokogiri::HTML(open(site))
+  #   results = page.css("h3")
+  #   puts results.text
+  # end
+# def hike_location
+#   self.hikes
+#   #iterate over individual websites for coordinates
+#   site = @@hike_list[0].value#[@index - 1]
+#   page = Nokogiri::HTML(open(site))
+#   r = page.css("h3 a")    
+#   r.text
+#   puts r.text
+# end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # class NjHikes::Scraper 

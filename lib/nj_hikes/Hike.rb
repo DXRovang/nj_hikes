@@ -9,13 +9,8 @@ class NjHikes::Hike
     @index = index
   end
 
-  def all_hikes
-    @@hike_list.each_with_index do |hike, index|
-    puts "#{index + 1}. #{hike}"
-  end
-
   def info
-
+    puts "Here's some info about your hike!"
   end
 
 
