@@ -26,9 +26,9 @@ class NjHikes::CLI
   end
 
   def get_user_input
-    puts "Brilliant!"
+    puts "\nBrilliant!"
     puts "There are #{@scraper.class.all.count} hikes in the state of NJ."
-    puts "These are the first 10."
+    puts "\nThese are the first 10."
     list_hikes
   end
 
@@ -40,7 +40,7 @@ class NjHikes::CLI
       puts "#{@@index + 1}. #{@scraper.class.all[@@index]}"
       @@index += 1
     end
-    puts "Please enter the number of the hike you're interested in,"
+    puts "\nPlease enter the number of the hike you're interested in,"
     puts "or type 'next' to see the next 10."
     @number = gets.chomp.to_i
     if @number == 0

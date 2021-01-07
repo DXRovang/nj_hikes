@@ -7,11 +7,11 @@ class NjHikes::Hike
 
   def info
     puts "Here's some info about your hike!"
-    puts "\n#{self.name}"
-    puts "Hike length: #{self.length}"
-    puts "Distance from #{NjHikes::CLI.hiker.city}: #{self.proximity} miles."
-    puts "Restroom facilities: #{self.toilet}"
-    puts "Website: #{self.website}"
+    puts "\n#{self.name}".colorize(:red)
+    puts "Hike length:".colorize(:green) + " #{self.length}"
+    puts "Distance from #{NjHikes::CLI.hiker.city}:".colorize(:green) + " #{self.proximity} miles."
+    puts "Restroom facilities:".colorize(:green) + " #{self.toilet}"
+    puts "Website:".colorize(:green) + " #{self.website}"
   end
 
   def proximity

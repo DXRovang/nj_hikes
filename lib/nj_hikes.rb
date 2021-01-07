@@ -8,6 +8,7 @@ require "nokogiri"
 require "open-uri"
 require "pry"
 require "geocoder"
+require "colorize"
 
 module NjHikes
   class Error < StandardError; end
