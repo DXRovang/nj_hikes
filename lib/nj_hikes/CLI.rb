@@ -1,6 +1,3 @@
-
-require "pry"
-
 class NjHikes::CLI
 
   def call
@@ -58,7 +55,7 @@ class NjHikes::CLI
 
   def closer(hike)
     hike.info
-    puts "Are you interested in looking at another hike?"
+    puts "\nAre you interested in looking at another hike?"
     puts "(y/n)"
     input = gets.chomp
     if input == "y"

@@ -1,7 +1,3 @@
-require "pry"
-require "nokogiri"
-require "open-uri"
-
 class NjHikes::Scraper 
 
   @@hike_list = []
@@ -52,6 +48,5 @@ class NjHikes::Scraper
     @new_hike.website = site
     @new_hike
   end
-
 
 end

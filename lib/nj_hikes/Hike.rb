@@ -1,18 +1,16 @@
-require "pry"
-
 class NjHikes::Hike 
 
-  attr_accessor :length, :coordinates, :toilet, :website, :distance, :name, :proximity
+  attr_accessor :length, :coordinates, :toilet, :website, :name, :proximity
 
   def initialize
   end
 
   def info
     puts "Here's some info about your hike!"
-    puts "#{self.name}"
+    puts "\n#{self.name}"
     puts "Hike length: #{self.length}"
     puts "Distance from #{NjHikes::CLI.hiker.city}: #{self.proximity} miles."
-    puts "Toilet: #{self.toilet}"
+    puts "Restroom facilities: #{self.toilet}"
     puts "Website: #{self.website}"
   end
 
