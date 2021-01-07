@@ -22,17 +22,10 @@ class NjHikes::CLI
 
   def greeting
     #instantiates Scraper & User
-    puts "\nWelcome!  Are you located in NJ? (y/n)"
-    input = gets.chomp
-    if input == "y"
-      @scraper = NjHikes::Scraper.new
-
-      puts "May I ask what city you're in?" 
-      city = gets.chomp
-      @@hiker = NjHikes::User.new(city)
-    else
-      puts "I'm sorry, this site only lists hikes in the state of NJ."
-    end
+    puts "\nWelcome to NJ Hikes!  May I ask what city in NJ you're in?"
+    city = gets.chomp
+    @scraper = NjHikes::Scraper.new
+    @@hiker = NjHikes::User.new(city)
   end
 
   def get_user_input
@@ -55,7 +48,6 @@ class NjHikes::CLI
     @number = gets.chomp.to_i
     if @number == 0
       list_hikes
-      binding.pry
     end
   end
 
@@ -72,6 +64,8 @@ class NjHikes::CLI
     if input == "y"
       @@index = 0
       search
+    else
+      puts "Thank you for visiting NJ Hikes.  Enjoy your hike!"
     end
   end
 
