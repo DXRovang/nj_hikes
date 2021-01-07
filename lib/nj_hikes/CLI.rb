@@ -47,7 +47,7 @@ class NjHikes::CLI
   def list_hikes
     #lists ten hikes at a time
     10.times do
-      puts "#{@@index + 1}. #{@scraper.hikes[@@index]}"
+      puts "#{@@index + 1}. #{@scraper.class.all[@@index]}"
       @@index += 1
     end
     puts "Please enter the number of the hike you're interested in,"
@@ -55,6 +55,7 @@ class NjHikes::CLI
     @number = gets.chomp.to_i
     if @number == 0
       list_hikes
+      binding.pry
     end
   end
 
