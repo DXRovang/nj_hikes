@@ -2,11 +2,12 @@ class NjHikes::CLI
 
   def call
       greeting
+      get_user_input
       search
   end
 
   def search
-    get_user_input
+    list_hikes
     list_number
     hike = @scraper.hike_info(@choice)
     closer(hike)    
@@ -29,7 +30,6 @@ class NjHikes::CLI
     puts "\nBrilliant!".colorize(:yellow)
     puts "There are #{@scraper.class.all.count} hikes in the state of NJ.".colorize(:yellow)
     puts "\nThese are the first 10.".colorize(:yellow)
-    list_hikes
   end
 
   @@index = 0
@@ -74,9 +74,9 @@ class NjHikes::CLI
         @@hiker.class.saved_hikes.each do |hike|
           puts "#{hike}".colorize(:blue)
         end
-        puts "Thank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
+        puts "\nThank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
       else
-        puts "Thank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
+        puts "\nThank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
       end 
     end
   end
