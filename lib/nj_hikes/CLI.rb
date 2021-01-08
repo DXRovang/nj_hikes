@@ -36,8 +36,11 @@ class NjHikes::CLI
 
   def list_hikes
     #lists ten hikes at a time
+    this_hike = @scraper.class.all
     10.times do
-      puts "#{@@index + 1}. #{@scraper.class.all[@@index]}"
+      length = this_hike[@@index].length - 2
+      hike = this_hike[@@index][25..length].split("-").map(&:capitalize).join(' ')
+      puts "#{@@index + 1}. #{hike}"
       @@index += 1
     end
     puts "\nPlease enter the number of the hike you're interested in,"
