@@ -19,16 +19,16 @@ class NjHikes::CLI
 
   def greeting
     #instantiates Scraper & User
-    puts "\nWelcome to NJ Hikes!  May I ask what city in NJ you're in?"
+    puts "\nWelcome to NJ Hikes!  May I ask what city in NJ you're in?".colorize(:yellow)
     city = gets.chomp
     @scraper = NjHikes::Scraper.new
     @@hiker = NjHikes::User.new(city)
   end
 
   def get_user_input
-    puts "\nBrilliant!"
-    puts "There are #{@scraper.class.all.count} hikes in the state of NJ."
-    puts "\nThese are the first 10."
+    puts "\nBrilliant!".colorize(:yellow)
+    puts "There are #{@scraper.class.all.count} hikes in the state of NJ.".colorize(:yellow)
+    puts "\nThese are the first 10.".colorize(:yellow)
     list_hikes
   end
 
@@ -43,8 +43,8 @@ class NjHikes::CLI
       puts "#{@@index + 1}. #{hike}"
       @@index += 1
     end
-    puts "\nPlease enter the number of the hike you're interested in,"
-    puts "or type 'next' to see the next 10."
+    puts "\nPlease enter the number of the hike you're interested in,".colorize(:yellow)
+    puts "or type 'next' to see the next 10.".colorize(:yellow)
     @number = gets.chomp.to_i
     if @number == 0
       list_hikes
@@ -54,18 +54,30 @@ class NjHikes::CLI
   def list_number
     #returns the website of the number that was chosen
     @choice = @scraper.hikes[@number - 1]
+    #binding.pry
+    @@hiker.class.saved_hikes << @choice
   end
 
   def closer(hike)
     hike.info
-    puts "\nAre you interested in looking at another hike?"
+    puts "\nAre you interested in looking at another hike?".colorize(:yellow)
     puts "(y/n)"
     input = gets.chomp
     if input == "y"
       @@index = 0
       search
-    else
-      puts "Thank you for visiting NJ Hikes.  Enjoy your hike!"
+    elsif input == "n"
+      puts "Would you like to see a list of the hikes you've already seen?".colorize(:yellow)
+      puts "(y/n)"
+      input = gets.chomp
+      if input == "y"
+        @@hiker.class.saved_hikes.each do |hike|
+          puts "#{hike}".colorize(:blue)
+        end
+        puts "Thank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
+      else
+        puts "Thank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
+      end 
     end
   end
 

@@ -6,7 +6,7 @@ class NjHikes::Hike
   end
 
   def info
-    puts "Here's some info about your hike!"
+    puts "Here's some info about your hike!".colorize(:yellow)
     puts "\n#{self.name}".colorize(:red)
     puts "Hike length:".colorize(:green) + " #{self.length}"
     puts "Distance from #{NjHikes::CLI.hiker.city}:".colorize(:green) + " #{self.proximity} miles."
