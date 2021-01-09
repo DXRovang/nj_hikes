@@ -36,7 +36,6 @@ class NjHikes::Scraper
     results1.each do |r|
       if r.text[1] != nil && r.text[1].match(/\d/)
         @new_hike.coordinates = r.text
-        #binding.pry
       end
     end
 
@@ -51,6 +50,16 @@ class NjHikes::Scraper
     end
     @new_hike.website = site
     @new_hike
+  end
+
+  #identifies cities in NJ to compare with user input
+  def cities
+    site = "https://www.alphalists.com/list/alphabetical-list-new-jersey-cities"
+    page = Nokogiri::HTML(open(site))
+    results = page.css(".field-item.even").css("p")
+    results.each do |r|
+      NjHikes::User.cities << r.text
+    end
   end
 
 end

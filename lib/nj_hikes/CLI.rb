@@ -21,9 +21,13 @@ class NjHikes::CLI
   def greeting
     #instantiates Scraper & User
     puts "\nWelcome to NJ Hikes!  May I ask what city in NJ you're in?".colorize(:yellow)
-    city = gets.chomp
+    @@hiker = NjHikes::User.new
     @scraper = NjHikes::Scraper.new
-    @@hiker = NjHikes::User.new(city)
+    @scraper.cities
+    city = gets.chomp
+    #add control statement to check city validity
+    @@hiker.city=city
+    #binding.pry
   end
 
   def get_user_input

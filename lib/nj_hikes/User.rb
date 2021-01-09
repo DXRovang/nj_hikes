@@ -1,11 +1,16 @@
 class NjHikes::User
 
-  attr_accessor :city, :saved_hikes
+  attr_accessor :city, :saved_hikes, :cities
 
   @@saved_hikes = []
+  @@cities = []
 
-  def initialize(city)
-    @city = city
+  def initialize
+
+  end
+
+  def self.cities
+    @@cities
   end
 
   def location
