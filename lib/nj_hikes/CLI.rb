@@ -9,8 +9,8 @@ class NjHikes::CLI
   def search
     list_hikes
     list_number
-    hike = @scraper.hike_info(@choice)
-    closer(hike)    
+    user_hike
+    closer(user_hike)    
   end
 
   @@hiker = nil
@@ -39,6 +39,7 @@ class NjHikes::CLI
     this_hike = @scraper.class.all
     10.times do
       length = this_hike[@@index].length - 2
+      #fixes the formatting, originally a website
       hike = this_hike[@@index][25..length].split("-").map(&:capitalize).join(' ')
       puts "#{@@index + 1}. #{hike}"
       @@index += 1
@@ -54,8 +55,12 @@ class NjHikes::CLI
   def list_number
     #returns the website of the number that was chosen
     @choice = @scraper.hikes[@number - 1]
-    #binding.pry
+    #saves hike for future use
     @@hiker.class.saved_hikes << @choice
+  end
+
+  def user_hike
+    @scraper.hike_info(@choice)
   end
 
   def closer(hike)
