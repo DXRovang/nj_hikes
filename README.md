@@ -1,6 +1,6 @@
 # NjHikes
 
-Discover hiking trails in the NJ area, organized by popularity, difficulty, proximity, and hike length.
+Discover hiking trails in the NJ area.
 
 ## Installation
 
