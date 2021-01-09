@@ -25,12 +25,21 @@ class NjHikes::CLI
     @scraper = NjHikes::Scraper.new
     @scraper.cities
     city = gets.chomp
-    #add control statement to check city validity
     @@hiker.city=city
-    #binding.pry
+  end
+
+  def valid_input
+    #add control statement to check city validity
+    if @@hiker.valid_city? == nil
+      puts "I'm sorry, we were unable to find that city in our database.".colorize(:yellow)
+      puts "What city in NJ will you be travelling from?".colorize(:yellow)
+      city = gets.chomp
+      @@hiker.city=city
+    end
   end
 
   def get_user_input
+    valid_input
     puts "\nBrilliant!".colorize(:yellow)
     puts "There are #{@scraper.class.all.count} hikes in the state of NJ.".colorize(:yellow)
     puts "\nThese are the first 10.".colorize(:yellow)

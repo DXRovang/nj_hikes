@@ -56,9 +56,9 @@ class NjHikes::Scraper
   def cities
     site = "https://www.alphalists.com/list/alphabetical-list-new-jersey-cities"
     page = Nokogiri::HTML(open(site))
-    results = page.css(".field-item.even").css("p")
+    results = page.css(".field-item.even").css("p").text.split
     results.each do |r|
-      NjHikes::User.cities << r.text
+      NjHikes::User.cities << r
     end
   end
 
