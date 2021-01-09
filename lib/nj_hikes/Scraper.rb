@@ -27,16 +27,20 @@ class NjHikes::Scraper
     site = choice
     page = Nokogiri::HTML(open(site))
 
+    #name attribute
     results = page.css("h1.entry-title").text
     @new_hike.name = results
 
+    #coordinates attribute
     results1 = page.css("h3 a")
     results1.each do |r|
       if r.text[1] != nil && r.text[1].match(/\d/)
         @new_hike.coordinates = r.text
+        #binding.pry
       end
     end
 
+    #hike length, restroom, and website attributes
     results2 = page.css("p")
     results2.each do |r|
       if r.text.downcase.include?("miles")
