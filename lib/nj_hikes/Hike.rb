@@ -31,4 +31,3 @@ class NjHikes::Hike
 
 end
 
-#"N40 54.714 W74 55.287"

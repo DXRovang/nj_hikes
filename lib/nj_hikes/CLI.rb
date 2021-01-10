@@ -81,16 +81,16 @@ class NjHikes::CLI
     puts "\nAre you interested in looking at another hike?".colorize(:yellow)
     puts "(y/n)"
     input = gets.chomp
-    if input == "y"
+    if input.downcase.include?("y")
       @@index = 0
       search
     elsif input == "n"
       puts "Would you like to see a list of the hikes you've already seen?".colorize(:yellow)
       puts "(y/n)"
       input = gets.chomp
-      if input == "y"
+      if input.downcase.include?("y")
         @@hiker.class.saved_hikes.each do |hike|
-          puts "#{hike}".colorize(:blue)
+          puts "#{hike}".colorize(:light_cyan)
         end
         puts "\nThank you for visiting NJ Hikes.  Enjoy your hike!".colorize(:yellow)
       else

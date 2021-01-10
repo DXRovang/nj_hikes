@@ -10,6 +10,7 @@ require "pry"
 require "geocoder"
 require "colorize"
 
+
 module NjHikes
   class Error < StandardError; end
   # Your code goes here...
