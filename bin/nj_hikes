@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 #this sets up ruby as the languqge
 
-require_relative "../lib/nj_hikes" 
+require_relative "../config/environment"
+#require_relative "../lib/nj_hikes" 
 #this is my RUN file
 
 NjHikes::CLI.new.call
