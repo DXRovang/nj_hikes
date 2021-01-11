@@ -58,7 +58,7 @@ class NjHikes::CLI
       @@index += 1
     end
     puts "\nPlease enter the number of the hike you're interested in,".colorize(:yellow)
-    puts "or type 'next' to see the next 10.".colorize(:yellow)
+    puts "or type".colorize(:yellow) + " 'next'".colorize(:light_cyan) + " to see the next 10.".colorize(:yellow)
     @number = gets.chomp.to_i
     if @number == 0
       list_hikes
